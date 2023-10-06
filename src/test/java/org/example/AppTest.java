@@ -12,9 +12,6 @@ public class AppTest {
     @Test
     public void checkTwoValuesEquals(){
 
-        //
-        //
-
         assertEquals( 3 , 3);
     }
 
