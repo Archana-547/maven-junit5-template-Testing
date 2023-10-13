@@ -13,7 +13,7 @@ public class PersonTest {
     }
 
     @Test
-    public void testCelebrateBirthday_1() {
+    public void testCelebrateBirthday_1mvn () {
         Person person = new Person("Bob", 25);
 
         person.celebrateBrithday();
