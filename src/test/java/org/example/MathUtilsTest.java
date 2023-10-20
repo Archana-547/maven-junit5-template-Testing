@@ -82,15 +82,32 @@ public class MathUtilsTest {
         Assertions.assertFalse(result == 8);
     }
 
+    @Test
+    void testDivide() {
+        double result = mathUtils.divide(10.0, 2.0);
+        assertEquals(5.0, result, 0.001);
 
+    }
+        @Test
+        void testMultiply() {
+            double result = mathUtils.multiply(3.5, 2.0);
+            assertEquals(7.0, result, 0.001);
+
+        }
 //=====================Test using params=================//
 
-    @ParameterizedTest
-    @ValueSource(ints = {5, 10, 15})
-    void testAddPositiveIntegers(int num) {
-        int sum = mathUtils.add(num, num);
-        Assertions.assertEquals(2 * num, sum);
+        @ParameterizedTest
+        @ValueSource(ints = {5, 10, 15})
+        void testAddPositiveIntegers (int num) {
+            int sum = mathUtils.add(num, num);
+            Assertions.assertEquals(2 * num, sum);
+        };
+
+        @ParameterizedTest
+        @ValueSource(doubles = {2.0, 3.0, 5.0})
+        void testSquare ( double num){
+            double result = mathUtils.square(num);
+            Assertions.assertEquals(num * num, result, 0.001);
+        }
     }
 
-
-  }
