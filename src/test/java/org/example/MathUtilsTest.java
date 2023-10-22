@@ -1,7 +1,9 @@
 package org.example;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.CsvFileSource;
 
 import java.security.KeyStore;
 
@@ -88,26 +90,50 @@ public class MathUtilsTest {
         assertEquals(5.0, result, 0.001);
 
     }
-        @Test
-        void testMultiply() {
-            double result = mathUtils.multiply(3.5, 2.0);
-            assertEquals(7.0, result, 0.001);
 
-        }
+    @Test
+    void testMultiply() {
+        double result = mathUtils.multiply(3.5, 2.0);
+        assertEquals(7.0, result, 0.001);
+
+    }
 //=====================Test using params=================//
 
-        @ParameterizedTest
-        @ValueSource(ints = {5, 10, 15})
-        void testAddPositiveIntegers (int num) {
-            int sum = mathUtils.add(num, num);
-            Assertions.assertEquals(2 * num, sum);
-        };
-
-        @ParameterizedTest
-        @ValueSource(doubles = {2.0, 3.0, 5.0})
-        void testSquare ( double num){
-            double result = mathUtils.square(num);
-            Assertions.assertEquals(num * num, result, 0.001);
-        }
+    @ParameterizedTest
+    @ValueSource(ints = {5, 10, 15})
+    void testAddPositiveIntegers(int num) {
+        int sum = mathUtils.add(num, num);
+        Assertions.assertEquals(2 * num, sum);
     }
 
+    ;
+
+    @ParameterizedTest
+    @ValueSource(doubles = {2.0, 3.0, 5.0})
+    void testSquare(double num) {
+        double result = mathUtils.square(num);
+        Assertions.assertEquals(num * num, result, 0.001);
+    }
+
+
+    //=============using csvsource annotations with 3  param==============//
+    @ParameterizedTest
+    //@CsvFileSource(resources = "/testdata.csv")
+    @CsvSource({"1,1,2", "2,3,5", "10,-3, 7" })
+    void testAddWithCsvFileSource(int a, int b, int expected) {
+        MathUtils mathUtils = new MathUtils();
+        int result = mathUtils.add(a, b);
+        Assertions.assertEquals(expected, result);
+    }
+
+
+    @ParameterizedTest
+    //@CsvFileSource(resources = "/testdata.csv")
+    @CsvSource({"1,1,1", "2,3,6", "10, 3, 30" })
+    void testMultiplyWithCsvFileSource(int num1,int num2, int expected) {
+        MathUtils mathUtils = new MathUtils();
+        double sum = mathUtils.multiply(num1, num2);
+        assertEquals(expected, sum);
+    }
+
+}
