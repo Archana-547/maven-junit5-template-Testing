@@ -44,6 +44,32 @@ public class TestOrderDto {
     public void setComment(String comment) {
         this.comment = comment;
     }
+
+    public void setCourierId(int courierId) {this.courierId = courierId;}
+
+    public String getStatus() {
+        return status;
+    }
+
+    public int getCourierId() {
+        return courierId;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public String getCustomerPhone() {
+        return customerPhone;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public int getId() {
+        return id;
+    }
 }
 
 
